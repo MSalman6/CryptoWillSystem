@@ -88,32 +88,38 @@ const Testator = ({account, provider}) => {
 
       <div className="newWillContainer">
         <div className="will-form">
-          <h2>Create New Will</h2>
-          <form>
-            <label htmlFor="amount">Amount:</label>
-            <input
-              type="text"
-              id="amount"
-              name="amount"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              required
-            />
+            {
+                account ?
+                <div>
+                    <h2>Create New Will</h2>
+                    <form>
+                        <label htmlFor="amount">Amount:</label>
+                        <input
+                        type="text"
+                        id="amount"
+                        name="amount"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        required
+                        />
 
-            <label htmlFor="beneficiary">Beneficiary:</label>
-            <input
-              type="text"
-              id="beneficiary"
-              name="beneficiary"
-              value={beneficiary}
-              onChange={(e) => setBeneficiary(e.target.value)}
-              required
-            />
+                        <label htmlFor="beneficiary">Beneficiary:</label>
+                        <input
+                        type="text"
+                        id="beneficiary"
+                        name="beneficiary"
+                        value={beneficiary}
+                        onChange={(e) => setBeneficiary(e.target.value)}
+                        required
+                        />
 
-            <button type="button" onClick={addBeneficiary}>
-              Add
-            </button>
-          </form>
+                        <button type="button" onClick={addBeneficiary}>
+                        Add
+                        </button>
+                    </form>
+                </div>
+                : <p>Please connect your wallet!</p>
+            }
 
           {beneficiaries.length > 0 && (
             <h2>Will definition</h2>
