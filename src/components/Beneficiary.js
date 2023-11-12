@@ -37,13 +37,9 @@ const Beneficiary = ({account, provider}) => {
                                 <p>{`Claimed: ${item.claimed}`}</p>
                             </div>
 
-                            {/* <button onClick={() => claimWill(item.willId)}>
-                                Claim
-                            </button> */}
-
                             {
                                 item.isClaimable && !item.claimed ? 
-                                    <button className="close-button" onClick={() => claimWill(item.willId)}>
+                                    <button onClick={() => claimWill(item.willId)}>
                                         Claim
                                     </button>
                                 : <></>

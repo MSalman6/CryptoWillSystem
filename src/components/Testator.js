@@ -29,8 +29,11 @@ const Testator = ({account, provider}) => {
     if (beneficiary && amount) {
       // Validate beneficiary as a wallet address
       const isWalletAddress = /^0x[a-fA-F0-9]{40}$/.test(beneficiary);
+
+      if (Number(amount) <= 0) return alert("Only amount greater than 1 can be willed");
   
       if (isWalletAddress) {
+        if (beneficiaries.includes(beneficiary)) return alert("Cannot add same beneficiary twice in one tx");
         setBeneficiaries([...beneficiaries, beneficiary]);
         setAmounts([...amounts, BigNumber(amount).multipliedBy(Math.pow(10, 18)).toString()]);
         setBeneficiary("");
@@ -95,12 +98,13 @@ const Testator = ({account, provider}) => {
                     <form>
                         <label htmlFor="amount">Amount:</label>
                         <input
-                        type="text"
+                        type="number"
                         id="amount"
                         name="amount"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                         required
+                        min={1}
                         />
 
                         <label htmlFor="beneficiary">Beneficiary:</label>
