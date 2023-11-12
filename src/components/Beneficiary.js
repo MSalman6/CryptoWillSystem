@@ -34,7 +34,7 @@ const Beneficiary = ({account, provider}) => {
                             <div className="text-section">
                                 <p>{`From: ${item.testator}`}</p>
                                 <p>{`Amount: ${BigNumber(item.amount).dividedBy(Math.pow(10, 18)).toString()} Ether`}</p>
-                                <p>{`Claimed: ${item.claimed}`}</p>
+                                <p>{`Claimed: ${item.claimed}.`}</p>
                             </div>
 
                             {
