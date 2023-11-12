@@ -52,17 +52,17 @@ function App() {
           });
         } catch(err) {
           if (err.code === 4902) {
-            // await web3ModalInstance.request({
-            //   method: 'wallet_addEthereumChain',
-            //   params: [
-            //     {
-            //       chainName: 'DMD',
-            //       chainId: new Web3().utils.toHex(chainId),
-            //       nativeCurrency: { name: 'DMD', decimals: 18, symbol: 'DMD' },
-            //       rpcUrls: [process.env.REACT_APP_REACT_APP_URL]
-            //     }
-            //   ]
-            // });
+            await web3ModalInstance.request({
+              method: 'wallet_addEthereumChain',
+              params: [
+                {
+                  chainName: process.env.REACT_APP_CHAIN_NAME,
+                  chainId: new Web3().utils.toHex(chainId),
+                  nativeCurrency: { name: process.env.REACT_APP_CHAIN_NAME, decimals: 18, symbol: process.env.REACT_APP_CHAIN_NAME },
+                  rpcUrls: [process.env.REACT_APP_REACT_APP_URL]
+                }
+              ]
+            });
           } else {
             console.log("Other Error", err)
             return undefined;
